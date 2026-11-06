@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Hash · Web Terminal</title>
+  <link rel="stylesheet" href="/assets/vendor/xterm.css">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-name">hash</span>
+        <span class="brand-sub">web terminal</span>
+      </div>
+      <div class="status" id="status" data-state="connecting">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="status-text">connecting</span>
+      </div>
+    </header>
+    <div id="terminal" class="terminal" aria-label="Hash terminal"></div>
+    <div id="overlay" class="overlay" hidden>
+      <div class="overlay-card">
+        <h1 id="overlay-title">Session ended</h1>
+        <p id="overlay-body">Start a new session to keep working.</p>
+        <button id="restart" type="button">Start a new session</button>
+        <p class="overlay-hint">Every browser tab gets its own shell session.</p>
+      </div>
+    </div>
+  </main>
+  <script src="/assets/vendor/xterm.js"></script>
+  <script src="/assets/vendor/addon-fit.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

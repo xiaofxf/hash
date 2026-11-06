@@ -28,6 +28,8 @@ func main() {
 		case "version":
 			printVersion()
 			os.Exit(0)
+		case "web":
+			os.Exit(runWeb(args[1:]))
 		}
 	}
 
@@ -100,6 +102,7 @@ Options:
 Subcommands:
   version         Show version
   migrate         Import compatible bash/zsh settings
+  web             Serve a browser terminal (see 'hash web -h')
 
 Interactive builtins:
   tips            Show common Hash shortcuts and AI syntax

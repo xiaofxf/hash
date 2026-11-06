@@ -98,6 +98,25 @@ Login shells source `/etc/profile`, `~/.profile`, and `~/.hash_profile`; interac
 
 On first launch, Hash detects your previous shell and asks before loading compatible settings. Run `hash migrate` to re-run migration, or `hash migrate status` to see what was imported and skipped.
 
+## Web terminal
+
+Hash can serve its own terminal in a browser through [xterm.js](https://xtermjs.org/):
+
+```bash
+hash web
+# Hash web terminal: http://127.0.0.1:7681/?token=...
+```
+
+Open the printed URL to get a full Hash session: editing, prompts, completion, `??` agent requests, and interactive programs all work because the page is attached to a real pseudo-terminal. Every browser tab gets its own shell session.
+
+The server binds to `127.0.0.1` and requires the random token printed at startup. Use `--listen` to change the address and `--open` to launch your browser:
+
+```bash
+hash web --listen 127.0.0.1:9000 --open
+```
+
+Listening on a non-loopback address exposes a shell to your network; keep the URL and token private. See [docs/features/web-terminal.md](docs/features/web-terminal.md) for the security model and implementation details.
+
 ## Documentation
 
 - **[runhash.dev](https://runhash.dev/)** — guides for syntax, agents, context, completion, learning, keybindings, integrations, migration, and advanced debugging (tracing, PTY logs, debug env vars).
@@ -125,6 +144,7 @@ hash/
 │   ├── learning/      # Error pattern matching and fix scoring
 │   ├── clipboard/     # Cross-platform copy command/output
 │   ├── prompt/        # Starship integration + built-in engine
+│   ├── web/           # xterm.js web terminal (PTY bridge)
 │   └── config/        # TOML configuration parsing
 └── go.mod
 ```
